@@ -1,4 +1,4 @@
-# k8s-placement-app
+# Kubernetes-placement-app
 project folder for ML model deployment using Kubernetes 
 
 
