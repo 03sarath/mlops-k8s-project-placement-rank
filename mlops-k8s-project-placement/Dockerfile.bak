@@ -1,7 +1,5 @@
 FROM python:3.8.12-slim
 
-MAINTAINER sarath kumar sarath@psitrontech.com
-
 RUN pip install pipenv
 
 WORKDIR /app
