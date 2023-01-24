@@ -13,7 +13,7 @@ candidate = [{"gender": "M",
   "specialisation": 'Mkt&Fin',
   "workex": 'Yes',
   }]
-url = "http://localhost:9696/predict"
+url = "http://127.0.0.1:65433/predict"
 response = requests.post(url=url, json=candidate)
 
 if response.status_code == 200:
