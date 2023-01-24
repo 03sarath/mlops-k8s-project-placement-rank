@@ -13,15 +13,11 @@ candidate = [{"gender": "M",
   "specialisation": 'Mkt&Fin',
   "workex": 'Yes',
   }]
+url = "http://127.0.0.1:65433/predict"
+response = requests.post(url=url, json=candidate)
 
-
-#url = "http://0.0.0.0:9696/predict"
-
-url = "http://127.0.0.1:55395/predict"
-result = requests.post(url=url,json=candidate).json()
-print('The Model Prediction for placement :',result)
-
-
-
-
-
+if response.status_code == 200:
+    output = response.json()
+    print(f'Candidate features have been evaluated and output is {output}')
+else:
+    print(f'Error in evaluating features, status code: {response.status_code}')

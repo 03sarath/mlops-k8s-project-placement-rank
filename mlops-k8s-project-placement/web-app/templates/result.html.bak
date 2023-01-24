@@ -1,0 +1,43 @@
+<html>
+<head>
+<style>
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+</style>
+</head>
+<body>
+<h1>Prediction Results</h1>
+<table>
+  <thead>
+    <tr>
+      <th>Prediction</th>
+      <th>Probability</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>{{result.Placement}}</td>
+      <td>{{result.Placement_Probability}}</td>
+    </tr>
+  </tbody>
+</table>
+</body>
+</html>
