@@ -1,0 +1,14 @@
+#service.yaml
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: flask-app-service-loadbalancer
+spec:
+  type: LoadBalancer
+  selector:
+    app: flask-app-service
+  ports:
+    - protocol: "TCP"
+      port: 5000
+      targetPort: 5000

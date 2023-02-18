@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: recruitment-rank-app
+spec:
+  selector:
+    matchLabels:
+      app: recruitment-rank-app
+  template:
+    metadata:
+      labels:
+        app: recruitment-rank-app
+    spec:
+      containers:
+      - name: placement-app
+        image: 03sarath/recruitment-rank-app:v1
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 9696
