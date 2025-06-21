@@ -1,15 +1,15 @@
 import requests
 
 candidate = [{"gender": "M",
-  "ssc_p": 71.0,
+  "ssc_p": 41.0,
   "ssc_b": 'Central',
-  "hsc_p": 58.66,
+  "hsc_p": 38.66,
   "hsc_b": 'Central',
   "hsc_s": 'Science',
-  "degree_p": 58.0,
+  "degree_p": 28.0,
   "degree_t": 'Sci&Tech',
-  "etest_p": 56.0,
-  "mba_p": 61.3,
+  "etest_p": 46.0,
+  "mba_p": 31.3,
   "specialisation": 'Mkt&Fin',
   "workex": 'Yes',
   }]

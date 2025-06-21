@@ -187,7 +187,7 @@ def predict():
   
 
     port = request.form['Port']
-    url = "http://a030ab4106aaf45b69237c007c4b7f43-1549301629.us-east-1.elb.amazonaws.com:"+ str(port) + "/predict"
+    url = "http://a2d35f8116dd142d8b1d1358bd6751d0-1802657586.us-east-1.elb.amazonaws.com:"+ str(port) + "/predict"
     response = requests.post(url=url, json=candidate)
 
     if response.status_code == 200:

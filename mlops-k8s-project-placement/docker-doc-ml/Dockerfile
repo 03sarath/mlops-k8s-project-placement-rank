@@ -12,6 +12,6 @@ RUN pipenv install --deploy --system
 
 COPY ["*.py", "project_one_model.pkl", "./"] 
 
-EXPOSE 8080
+EXPOSE 9696
 
-ENTRYPOINT ["gunicorn", "--bind=0.0.0.0:8080", "predict:app"]
+ENTRYPOINT ["gunicorn", "--bind=0.0.0.0:9696", "predict:app"]
