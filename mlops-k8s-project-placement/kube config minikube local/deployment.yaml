@@ -1,22 +1,76 @@
+# =============================================================
+# Kubernetes Deployment — Recruitment Rank App (ML Model)
+# =============================================================
+
 apiVersion: apps/v1
 kind: Deployment
+
+# METADATA
 metadata:
   name: recruitment-rank-app
+
+
 spec:
+
+  # REPLICAS
+  replicas: 2
+
+  # REVISION HISTORY
+  revisionHistoryLimit: 3
+
+  # SELECTOR
   selector:
     matchLabels:
       app: recruitment-rank-app
+
+  # POD TEMPLATE
   template:
     metadata:
       labels:
         app: recruitment-rank-app
+
     spec:
       containers:
-      - name: placement-app
-        image: 03sarath/recruitment-rank-app:v1
-        resources:
-          limits:
-            memory: "128Mi"
-            cpu: "500m"
-        ports:
-        - containerPort: 9696
+        - name: placement-app
+          image: 03sarath/recruitment-rank-app:v1
+          imagePullPolicy: Always
+
+          ports:
+            - containerPort: 9696
+              name: http
+
+          # RESOURCE REQUESTS & LIMITS
+          resources:
+            requests:
+              memory: "128Mi"
+              cpu: "250m"
+            limits:
+              memory: "256Mi"
+              cpu: "500m"
+
+          # READINESS PROBE
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 9696
+            initialDelaySeconds: 15
+            periodSeconds: 10
+            failureThreshold: 3
+            successThreshold: 1
+
+          # LIVENESS PROBE
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 9696
+            initialDelaySeconds: 30
+            periodSeconds: 30
+            failureThreshold: 3
+            successThreshold: 1
+
+  # UPDATE STRATEGY
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0

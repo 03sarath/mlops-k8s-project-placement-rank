@@ -1,0 +1,43 @@
+# =============================================================
+# HorizontalPodAutoscaler (HPA) — Recruitment Rank App
+# =============================================================
+
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+
+# METADATA
+metadata:
+  name: recruitment-rank-hpa
+  labels:
+    app: recruitment-rank-app
+
+spec:
+
+  # TARGET DEPLOYMENT
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: recruitment-rank-app
+
+  # REPLICA BOUNDS
+  minReplicas: 2
+  maxReplicas: 8
+
+  # SCALING METRICS
+  metrics:
+
+    # CPU METRIC
+    - type: Resource
+      resource:
+        name: cpu
+        target:
+          type: Utilization
+          averageUtilization: 70
+
+    # MEMORY METRIC
+    - type: Resource
+      resource:
+        name: memory
+        target:
+          type: Utilization
+          averageUtilization: 80

@@ -1,14 +1,26 @@
-#service.yaml
+# =============================================================
+# Kubernetes Service — Recruitment Rank App
+# =============================================================
 
 apiVersion: v1
 kind: Service
+
+# METADATA
 metadata:
   name: recruitment-rank-app
+
 spec:
+
+  # SERVICE TYPE
   type: LoadBalancer
+
+  # SELECTOR
   selector:
     app: recruitment-rank-app
+
+  # PORT MAPPING
   ports:
-    - protocol: "TCP"
+    - name: http
+      protocol: TCP
       port: 80
       targetPort: 9696
