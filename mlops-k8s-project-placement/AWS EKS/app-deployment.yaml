@@ -32,7 +32,7 @@ spec:
     spec:
       containers:
         - name: placement-app
-          image: 03sarath/recruitment-rank-app:v1
+          image: 03sarath/placement-rank-ai:v1
           imagePullPolicy: Always
 
           ports:
@@ -43,15 +43,15 @@ spec:
           resources:
             requests:
               memory: "128Mi"
-              cpu: "250m"
+              cpu: "500m"
             limits:
               memory: "256Mi"
-              cpu: "500m"
+              cpu: "1"
 
           # READINESS PROBE
           readinessProbe:
             httpGet:
-              path: /
+              path: /health
               port: 9696
             initialDelaySeconds: 15
             periodSeconds: 10
@@ -61,7 +61,7 @@ spec:
           # LIVENESS PROBE
           livenessProbe:
             httpGet:
-              path: /
+              path: /health
               port: 9696
             initialDelaySeconds: 30
             periodSeconds: 30
